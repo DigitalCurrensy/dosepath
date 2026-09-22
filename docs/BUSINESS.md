@@ -1,4 +1,3 @@
 # Business
-Buyer: incident command software group, wildfire lab, analog-EVA trainer.
-Offer: county pack, then engine license.
-Do not sell medical advice. Do not claim NASA crew certification.
+
+Analog-EVA paper pack $8k–$18k. Not an invoice. Not a medical device. Owner: Digital Currensy Inc. Apache-2.0 of our code.

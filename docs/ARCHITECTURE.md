@@ -1,3 +1,3 @@
-# Wiring
-Field ingest → time slices → graph builder → shortest path with time-dependent weights → no-path brief.
-Earth: FIRMS + OSM roads. Moon: site graph + published SPE profiles.
+# Architecture
+
+Owned time-binned router in `src/dosepath/route.py`. Stay letter in `src/dosepath/stay.py`. Heap has no wait action. FIRMS named, not fetched.

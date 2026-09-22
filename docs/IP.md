@@ -1,4 +1,5 @@
 # IP
-Own: time-dependent cost model and no-path letter.
-Do not own: FIRMS, OSM, SPE science papers.
-Not a medical device.
+
+Own: time-binned walk, stay letter, freeze.
+
+Not own: FIRMS, OSM, WBD. ODbL stays theirs. Cite them.

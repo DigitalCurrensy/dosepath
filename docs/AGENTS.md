@@ -1,3 +1,3 @@
-# Seats
-Field → graph → router → margin gate → brief.
-If margin < 0, router returns empty and brief says stay.
+# Agents
+
+Seats: field, graph, clock, stay letter, analog. URS last. Not medical.
