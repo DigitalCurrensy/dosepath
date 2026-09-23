@@ -19,12 +19,25 @@ from typing import Dict, Tuple
 Node = Tuple[int, int]
 
 
-def route(cost: Dict[Tuple[Node, Node, int], float], start: Node, goal: Node, t0: int, t_max: int) -> list[Node] | None:
+def route(
+    cost: Dict[Tuple[Node, Node, int], float],
+    start: Node,
+    goal: Node,
+    t0: int,
+    t_max: int,
+    dose_cap: float | None = None,
+) -> list[Node] | None:
+    if start == goal:
+        if t0 <= t_max and (dose_cap is None or 0 <= dose_cap):
+            return [start]
+        return None
     heap = [(0.0, t0, start, [start])]
     seen: set[tuple[Node, int]] = set()
     while heap:
         c, t, n, path = heapq.heappop(heap)
         if n == goal:
+            if dose_cap is not None and c > dose_cap:
+                return None
             return path
         if t >= t_max or (n, t) in seen:
             continue

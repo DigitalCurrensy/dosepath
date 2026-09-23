@@ -1,26 +1,31 @@
 # DOSEPATH
 
-For a crew planner walking people through a radiation field that gets worse while they walk.
+For a crew planner who needs a walk across a grid, or a stay.
 
 **Owner:** Digital Currensy Inc.
 **Copyright:** 2026 Digital Currensy Inc.
-**License:** Apache-2.0. The file named LICENSE is the standard license and is not edited. The copyright notice is in NOTICE and at the top of each source file. Cited data and papers stay with their authors.
+**License:** Apache-2.0. The file named LICENSE is the standard license and is not edited. The copyright notice is in NOTICE and at the top of each source file.
+
 ## What it decides
 
-A path with a running cost, or a stay. No path is a result.
+A path, or a stay. No path is a result. If the cheapest walk exceeds the dose cap, that is a stay too.
 
 ## The rule
 
-Occupancy is the cost. Minutes are the clock. The route is the cheapest walk that finishes inside the time. If every walk breaks the clock or the dose, the desk says stay.
+This is a grid search in four directions. Occupancy is the edge cost. Minutes are the steps. The route is the cheapest walk that finishes inside the time. If every walk breaks the clock, or the cheapest walk breaks the dose cap, the desk says stay.
 
-## Worked cases
+It is not a radiation transport model.
 
-Four walks stored here: an onset walk, a stay at the peak, a bag too tight to carry a path, and a keep-out in permanent shadow. They are not a crew timeline a customer sent.
+Standing on the start cell is a path of one node when the clock still has time and the dose cap allows a cost of zero. It is not a free wait while the field changes.
+
+## Worked rows
+
+`examples/edges.csv` is a small grid that has a path. It is not a crew timeline a customer sent.
 
 ## What it will not do
 
 - Invent a path after the clock runs out.
-- Treat standing still as free.
+- Accept a walk whose cost exceeds the dose cap.
 - Sign a flight rule.
 
 ## Run
@@ -29,6 +34,7 @@ Four walks stored here: an onset walk, a stay at the peak, a bag too tight to ca
 git clone <this repo>
 cd dosepath
 PYTHONPATH=src python -m unittest tests.test_kernel
+PYTHONPATH=src python -m dosepath examples/edges.csv --start 0,0 --goal 1,0 --t0 0 --tmax 5 --dose-cap 10
 ```
 
-Python 3.12. No third-party packages. The test is the demo.
+Python 3.11 or newer. No third-party packages. A path and a stay both exit 0.
