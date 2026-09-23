@@ -10,5 +10,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install
+        run: pip install -e .
       - name: Kernel tests
-        run: PYTHONPATH=src python -m unittest tests.test_kernel
+        run: python -m unittest tests.test_kernel
+      - name: Example
+        run: python -m dosepath examples/edges.csv --start 0,0 --goal 1,0 --t0 0 --tmax 5 --dose-cap 10
