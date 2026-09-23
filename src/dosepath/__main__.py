@@ -57,7 +57,13 @@ def main(argv: list[str] | None = None) -> int:
     if walked is None:
         print("stay")
     else:
-        print(" ".join(f"{x},{y}" for x, y in walked))
+        dose = 0.0
+        tick = args.t0
+        for left, right in zip(walked, walked[1:]):
+            dose += cost[(left, right, tick)]
+            tick += 1
+        nodes = " ".join(f"{x},{y}" for x, y in walked)
+        print(f"dose={dose:.10g} {nodes}")
     return 0
 
 

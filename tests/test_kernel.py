@@ -14,6 +14,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -84,6 +85,19 @@ class FiniteCostTests(unittest.TestCase):
     def test_non_finite_cost_is_not_a_step(self) -> None:
         cost = {((0, 0), (1, 0), 0): float("nan")}
         self.assertIsNone(route(cost, (0, 0), (1, 0), t0=0, t_max=3))
+
+
+class DoseLineTests(unittest.TestCase):
+    def test_example_prints_the_sum(self) -> None:
+        import subprocess
+        proc = subprocess.run(
+            [sys.executable, "-m", "dosepath", str(ROOT.parent / "examples" / "edges.csv"),
+             "--start", "0,0", "--goal", "1,0", "--t0", "0", "--tmax", "5", "--dose-cap", "10"],
+            cwd=ROOT.parent, env={**os.environ, "PYTHONPATH": str(ROOT)},
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertEqual(proc.stdout.strip(), "dose=1 0,0 1,0")
 
 
 if __name__ == "__main__":
