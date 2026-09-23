@@ -72,5 +72,12 @@ class RouteTests(unittest.TestCase):
         )
 
 
+    def test_diagonal_and_negative_cost(self) -> None:
+        cost = {((0, 0), (1, 1), 0): 2.0}
+        self.assertEqual(route(cost, (0, 0), (1, 1), t0=0, t_max=2), [(0, 0), (1, 1)])
+        blocked = {((0, 0), (1, 0), 0): -1.0}
+        self.assertIsNone(route(blocked, (0, 0), (1, 0), t0=0, t_max=3))
+
+
 if __name__ == "__main__":
     unittest.main()
