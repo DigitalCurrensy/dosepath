@@ -97,7 +97,7 @@ class DoseLineTests(unittest.TestCase):
             capture_output=True, text=True, check=False,
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertEqual(proc.stdout.strip(), "dose=1 0,0 1,0")
+        self.assertEqual(proc.stdout.strip(), "dose=1 edges=1 0,0 1,0")
 
 
 if __name__ == "__main__":

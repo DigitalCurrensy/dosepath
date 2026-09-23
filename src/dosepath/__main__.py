@@ -63,7 +63,7 @@ def main(argv: list[str] | None = None) -> int:
             dose += cost[(left, right, tick)]
             tick += 1
         nodes = " ".join(f"{x},{y}" for x, y in walked)
-        print(f"dose={dose:.10g} {nodes}")
+        print(f"dose={dose:.10g} edges={len(walked) - 1} {nodes}")
     return 0
 
 
