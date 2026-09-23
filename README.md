@@ -12,7 +12,7 @@ A path, or a stay. No path is a result. If the cheapest walk exceeds the dose ca
 
 ## The rule
 
-This is a grid search in eight directions. Orthogonal and diagonal steps each take one tick. The dose is the sum of the costs in the caller's table. A missing edge is not a step. A negative cost is not a step. The route is the cheapest walk that finishes inside the time. If every walk breaks the clock, or the cheapest walk breaks the dose cap, the desk says stay.
+This is a grid search in eight directions. Orthogonal and diagonal steps each take one tick. The dose is the sum of the costs in the caller's table. A missing edge is not a step. A negative cost is not a step. A non-finite cost is not a step. The route is the cheapest walk that finishes inside the time. If every walk breaks the clock, or the cheapest walk breaks the dose cap, the desk says stay.
 
 Standing on the start cell is a path of one node when the clock still has time and the dose cap allows a cost of zero. It is not a free wait while the field changes.
 

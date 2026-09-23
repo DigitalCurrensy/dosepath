@@ -14,6 +14,7 @@
 
 """Owned time-binned router. Grid is small on purpose."""
 import heapq
+import math
 from typing import Dict, Tuple
 
 Node = Tuple[int, int]
@@ -45,7 +46,7 @@ def route(
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)):
             nxt = (n[0] + dx, n[1] + dy)
             key = (n, nxt, t)
-            if key not in cost or cost[key] < 0:
+            if key not in cost or not math.isfinite(cost[key]) or cost[key] < 0:
                 continue
             heapq.heappush(heap, (c + cost[key], t + 1, nxt, path + [nxt]))
     return None

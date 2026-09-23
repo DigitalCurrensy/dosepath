@@ -79,5 +79,12 @@ class RouteTests(unittest.TestCase):
         self.assertIsNone(route(blocked, (0, 0), (1, 0), t0=0, t_max=3))
 
 
+
+class FiniteCostTests(unittest.TestCase):
+    def test_non_finite_cost_is_not_a_step(self) -> None:
+        cost = {((0, 0), (1, 0), 0): float("nan")}
+        self.assertIsNone(route(cost, (0, 0), (1, 0), t0=0, t_max=3))
+
+
 if __name__ == "__main__":
     unittest.main()
