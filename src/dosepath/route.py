@@ -28,6 +28,8 @@ def route(
     t_max: int,
     dose_cap: float | None = None,
 ) -> list[Node] | None:
+    if dose_cap is not None and not math.isfinite(dose_cap):
+        return None
     if start == goal:
         if t0 <= t_max and (dose_cap is None or 0 <= dose_cap):
             return [start]

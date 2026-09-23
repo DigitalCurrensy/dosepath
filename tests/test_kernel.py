@@ -86,6 +86,12 @@ class FiniteCostTests(unittest.TestCase):
         cost = {((0, 0), (1, 0), 0): float("nan")}
         self.assertIsNone(route(cost, (0, 0), (1, 0), t0=0, t_max=3))
 
+    def test_non_finite_dose_cap_is_a_stay(self) -> None:
+        cost = {((0, 0), (1, 0), 0): 1.0}
+        self.assertIsNone(route(cost, (0, 0), (1, 0), t0=0, t_max=5, dose_cap=float("nan")))
+        self.assertIsNone(route(cost, (0, 0), (1, 0), t0=0, t_max=5, dose_cap=float("inf")))
+        self.assertIsNone(route({}, (0, 0), (0, 0), t0=0, t_max=5, dose_cap=float("inf")))
+
 
 class DoseLineTests(unittest.TestCase):
     def test_example_prints_the_sum(self) -> None:
