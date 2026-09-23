@@ -1,9 +1,10 @@
 # DOSEPATH
 
-DOSEPATH routes a person through a field that is getting worse, or says that no path exists in the time left.
+For a crew planner walking people through a radiation field that gets worse while they walk.
 
 **Owner:** Digital Currensy Inc.
-**License:** Apache-2.0. Our code only. Cited maps stay with their authors.
+**License:** Apache-2.0. Our code only. Cited data and papers stay with their authors.
+**Status:** Private until the owner publishes it.
 
 ## What it decides
 
@@ -15,7 +16,7 @@ Occupancy is the cost. Minutes are the clock. The route is the cheapest walk tha
 
 ## Worked cases
 
-Four walks stored in this repository: an onset walk, a stay at the peak, a bag that is too tight to carry a path, and a keep-out at a permanently shadowed region. These are the desk’s cases. They are not a crew timeline a customer sent.
+Four walks stored here: an onset walk, a stay at the peak, a bag too tight to carry a path, and a keep-out in permanent shadow. They are not a crew timeline a customer sent.
 
 ## What it will not do
 
@@ -26,7 +27,9 @@ Four walks stored in this repository: an onset walk, a stay at the peak, a bag t
 ## Run
 
 ```
+git clone <this repo>
+cd dosepath
 PYTHONPATH=src python -m unittest tests.test_kernel
 ```
 
-Notes under `docs/` are the build record. This page is the description.
+Python 3.12. No third-party packages. The test is the demo.
