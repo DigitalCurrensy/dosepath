@@ -4,8 +4,6 @@ For a crew planner walking people through a radiation field that gets worse whil
 
 **Owner:** Digital Currensy Inc.
 **License:** Apache-2.0. Our code only. Cited data and papers stay with their authors.
-**Status:** Private until the owner publishes it.
-
 ## What it decides
 
 A path with a running cost, or a stay. No path is a result.

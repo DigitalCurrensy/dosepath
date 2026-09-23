@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from .route import Node
 
-OFFER = "analog-EVA paper pack $8k–$18k. Not an invoice."
+OFFER = "Unsigned. Not an invoice."
 GOLDEN = ["TRPO", "HAMM", "KAWE", "LEMO", "WOOD"]
 
 
