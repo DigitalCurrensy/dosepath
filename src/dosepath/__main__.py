@@ -20,6 +20,7 @@ import argparse
 import csv
 from pathlib import Path
 
+from .record import finish
 from .route import Node, route
 
 
@@ -39,6 +40,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--t0", type=int, required=True)
     parser.add_argument("--tmax", type=int, required=True)
     parser.add_argument("--dose-cap", type=float, default=None)
+    parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
     cost: dict[tuple[Node, Node, int], float] = {}
     with Path(args.csv_path).open(newline="", encoding="utf-8") as handle:
@@ -55,7 +57,8 @@ def main(argv: list[str] | None = None) -> int:
         dose_cap=args.dose_cap,
     )
     if walked is None:
-        print("stay")
+        line = "stay"
+        word = "stay"
     else:
         dose = 0.0
         tick = args.t0
@@ -63,8 +66,9 @@ def main(argv: list[str] | None = None) -> int:
             dose += cost[(left, right, tick)]
             tick += 1
         nodes = " ".join(f"{x},{y}" for x, y in walked)
-        print(f"dose={dose:.10g} edges={len(walked) - 1} {nodes}")
-    return 0
+        line = f"dose={dose:.10g} edges={len(walked) - 1} {nodes}"
+        word = "path"
+    return finish("dosepath", "Occupancy is cost. Over the cap, or out of time, is stay.", [line], args.json, [word])
 
 
 if __name__ == "__main__":

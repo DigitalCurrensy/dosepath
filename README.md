@@ -23,6 +23,33 @@ PYTHONPATH=src python -m dosepath examples/edges.csv --start 0,0 --goal 1,0 --t0
 
 The rest of this file is the formula that command prints.
 
+## Record
+
+`--json` prints one object. The process exit code is that object's `exit`. 0 is a pass word (`ok`, `pass`, `scored`, `path`). 1 is a refusal. 2 means the file could not be read. `keep` is false. `absent` is what this output does not contain: a stamp, measured basin months, and the points inside a `.laz` file.
+
+This object is not WaterML and it is not a USGS response.
+
+```json
+{
+  "absent": [
+    "stamp",
+    "measured_months",
+    "laz_points"
+  ],
+  "desk": "dosepath",
+  "exit": 0,
+  "formula": "Occupancy is cost. Over the cap, or out of time, is stay.",
+  "keep": false,
+  "rows": [
+    {
+      "line": "dose=1 edges=1 0,0 1,0",
+      "word": "path"
+    }
+  ],
+  "word": "path"
+}
+```
+
 
 For a crew planner who needs a walk across a grid, or a stay.
 
