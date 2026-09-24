@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: If you use this library, cite the repository.
+title: dosepath
+abstract: Lowest-dose eight-neighbor walk on costs you supply. Over the cap, or out of time, the answer is stay.
+authors:
+  - name: Digital Currensy Inc.
+license: Apache-2.0
+repository-code: https://github.com/DigitalCurrensy/dosepath
