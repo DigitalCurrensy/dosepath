@@ -1,5 +1,29 @@
 # DOSEPATH
 
+[![check](https://github.com/DigitalCurrensy/dosepath/actions/workflows/check.yml/badge.svg)](https://github.com/DigitalCurrensy/dosepath/actions/workflows/check.yml)
+
+For a traverse planner who already has a grid of dose costs.
+
+The command finds the lowest-dose eight-neighbor walk. A missing, negative, or non-finite edge is not a step. Over the dose cap, or out of time, the answer is stay.
+
+This is not a radiation model. You bring the costs.
+
+## Install
+
+```bash
+pip install -e .
+PYTHONPATH=src python -m unittest tests.test_kernel
+```
+
+## First command
+
+```bash
+PYTHONPATH=src python -m dosepath examples/edges.csv --start 0,0 --goal 1,0 --t0 0 --tmax 5 --dose-cap 10
+```
+
+The rest of this file is the formula that command prints.
+
+
 For a crew planner who needs a walk across a grid, or a stay.
 
 **Owner:** Digital Currensy Inc.
